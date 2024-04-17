@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import { ScreenProps } from '../screen';
 import { useCallback, useState } from 'react';

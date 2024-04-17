@@ -3,12 +3,14 @@ import type { HomeScreenProps } from './HomeScreen';
 import type { ExcerciseDetailScreenProps } from './ExcerciseDetailScreen';
 import { LoginScreenProps } from './LoginScreen';
 import { RegisterScreenProps } from './RegisterScreen';
+import { WelcomeScreenProps } from './WelcomeScreen';
 
 export type RootStackParamList = {
   Home: HomeScreenProps;
-  ExcerciseDetail: ExcerciseDetailScreenProps;
+  Welcome: WelcomeScreenProps;
   Login: LoginScreenProps;
   Register: RegisterScreenProps;
+  ExcerciseDetail: ExcerciseDetailScreenProps;
 };
 
 export type ScreenProps<T> = NativeStackScreenProps<RootStackParamList, T>;
