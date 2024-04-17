@@ -7,7 +7,8 @@ export const LoginScreen = ({ navigation }: ScreenProps<"Login">) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const loginAction = useCallback(() => {}, []);
+    const loginAction = useCallback(() => navigation.navigate('Home', {}), []);
+    const registerAction = useCallback(() => navigation.navigate('Register', {}), []);
     const lostPasswordAction = useCallback(() => {}, []);
 
     return (
@@ -19,6 +20,7 @@ export const LoginScreen = ({ navigation }: ScreenProps<"Login">) => {
                 placeholder="Username"
                 onChangeText={setUsername}
                 defaultValue={username}
+                textContentType="username"
             />
             <TextInput
                 style={styles.input}
@@ -26,12 +28,17 @@ export const LoginScreen = ({ navigation }: ScreenProps<"Login">) => {
                 onChangeText={setPassword}
                 defaultValue={password}
                 secureTextEntry={true}
+                textContentType="password"
             />
           </View>
           <View style={styles.actionContainer}>
             <Button
             title="Login"
             onPress={loginAction}
+            />
+            <Button
+            title="Sign-up"
+            onPress={registerAction}
             />
             <Button
             title="Forgot password"
