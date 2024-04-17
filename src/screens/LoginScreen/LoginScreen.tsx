@@ -1,66 +1,47 @@
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { Button, TextInput } from 'react-native-paper';
 import { ScreenProps } from '../screen';
 import { useCallback, useState } from 'react';
+import { TitleBlock } from '@components/TitleBlock';
 
 export const LoginScreen = ({ navigation }: ScreenProps<"Login">) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    const backToWelcomeAction = useCallback(() => navigation.navigate('Welcome', {}), []);
     const loginAction = useCallback(() => navigation.navigate('Home', {}), []);
-    const registerAction = useCallback(() => navigation.navigate('Register', {}), []);
     const lostPasswordAction = useCallback(() => {}, []);
 
     return (
-      <View style={styles.container}>
-          <Text>Login with your account, to continue</Text>
-          <View style={styles.inputContainer}>
-            <TextInput
-                style={styles.input}
-                placeholder="Username"
-                onChangeText={setUsername}
-                defaultValue={username}
-                textContentType="username"
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Password"
-                onChangeText={setPassword}
-                defaultValue={password}
-                secureTextEntry={true}
-                textContentType="password"
-            />
-          </View>
-          <View style={styles.actionContainer}>
-            <Button
-            title="Login"
-            onPress={loginAction}
-            />
-            <Button
-            title="Sign-up"
-            onPress={registerAction}
-            />
-            <Button
-            title="Forgot password"
-            onPress={lostPasswordAction}
-            />
-          </View>
-      </View>
+      <SafeAreaView style={styles.container}>
+        <TitleBlock title='Welcome!' subtitle='Sign in with your account to continue' topbarProps={{ backAction: backToWelcomeAction }} />
+        <View style={styles.inputContainer}>
+          <TextInput label="Username" onChangeText={setUsername} value={username} textContentType="username" />
+          <TextInput label="Password" onChangeText={setPassword} value={password} secureTextEntry textContentType="password" />
+        </View>
+        <View style={styles.actionContainer}>
+          <Button mode='contained' onPress={loginAction}>Login</Button>
+          <Button onPress={lostPasswordAction}>Forgot password?</Button>
+        </View>
+      </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
     },
-    input: {
-        height: 40,
+    inputContainer: {
+      marginTop: 32,
+      marginHorizontal: 16,
+      gap: 16,
     },
-    inputContainer: {},
     actionContainer: {
-        flexDirection: 'row',
-        gap: 10,
+      marginTop: 'auto',
+      marginHorizontal: 48,
+      marginBottom: 172,
+      flexDirection: 'column',
+      justifyContent: 'flex-end',
+      gap: 16,
     }
 });

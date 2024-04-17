@@ -1,26 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { ScreenProps } from '../screen';
-import { useEffect } from 'react';
+import { Topbar } from '@components/Topbar';
 
 export const HomeScreen = ({ navigation }: ScreenProps<"Home">) => {
     return (
-      <View style={styles.container}>
-          <Text>Open up App.js to start working on your app!</Text>
-          <StatusBar style="auto" />
-          <Button
-          title="Go to Details"
-          onPress={() => navigation.navigate('ExcerciseDetail', { excerciseId: 2 })}
+      <SafeAreaView style={styles.container}>
+        <Topbar title='Hi name' />
+        <Text>Open up App.js to start working on your app!</Text>
+        <StatusBar style="auto" />
+        <Button
+        title="Go to Details"
+        onPress={() => navigation.navigate('ExcerciseDetail', { excerciseId: 2 })}
         />
-      </View>
+      </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
+  container: {
+    flex: 1,
+    justifyContent: 'flex-start',
+  },
 });

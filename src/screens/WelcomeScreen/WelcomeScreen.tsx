@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { Button, Text } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 import { ScreenProps } from '../screen';
+import { TitleBlock } from '@components/TitleBlock';
 
 export const WelcomeScreen = ({ navigation }: ScreenProps<"Welcome">) => {
     const loginAction = useCallback(() => navigation.navigate('Login', {}), []);
@@ -9,25 +10,18 @@ export const WelcomeScreen = ({ navigation }: ScreenProps<"Welcome">) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.titleContainer}>
-                <Text variant='displaySmall'>Strengtify</Text>
-                <Text variant='headlineSmall'>The workout manager</Text>
-            </View>
+            <TitleBlock title='Strengtify' subtitle='The workout manager' />
             <View style={styles.actionContainer}>
-                <View style={styles.action}>
-                    <Button onPress={registerAction}>Sign up</Button>
-                </View>
-                <View style={styles.action}>
-                    <Button
-                        mode='contained'
-                        icon='chevron-right'
-                        contentStyle={styles.loginActionContent}
-                        style={styles.loginAction}
-                        onPress={loginAction}
-                    >
-                        Login
-                    </Button>
-                </View>
+                <Button onPress={registerAction} style={styles.action}>Sign up</Button>
+                <Button
+                    mode='contained'
+                    icon='chevron-right'
+                    contentStyle={styles.loginActionContent}
+                    style={[styles.action, styles.loginAction]}
+                    onPress={loginAction}
+                >
+                    Login
+                </Button>
             </View>
         </SafeAreaView>
     );
@@ -36,27 +30,23 @@ export const WelcomeScreen = ({ navigation }: ScreenProps<"Welcome">) => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center',
-    },
-    titleContainer: {
-        flexDirection: 'column',
-        flex: 1,
-        marginTop: 128,
-        marginHorizontal: 16,
     },
     actionContainer: {
         flexDirection: 'row',
         width: '100%',
+        marginTop: 'auto',
         justifyContent: 'space-between',
         gap: 64,
-        marginBottom: 86,
+        marginBottom: 64,
     },
     action: {
         flex: 1,
     },
     loginAction: {
+        borderTopLeftRadius: 8,
         borderTopRightRadius: 0,
-        borderBottomRightRadius: 0
+        borderBottomRightRadius: 0,
+        borderBottomLeftRadius: 8,
     },
     loginActionContent: {
         flexDirection: 'row-reverse'
