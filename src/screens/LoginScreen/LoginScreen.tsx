@@ -1,8 +1,9 @@
+import { useCallback, useState } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 import { ScreenProps } from '../screen';
-import { useCallback, useState } from 'react';
 import { TitleBlock } from '@components/TitleBlock';
+import { commonStyles } from 'commonStyles';
 
 export const LoginScreen = ({ navigation }: ScreenProps<"Login">) => {
     const [username, setUsername] = useState('');
@@ -32,8 +33,8 @@ const styles = StyleSheet.create({
       flex: 1,
     },
     inputContainer: {
+      ...commonStyles.horizontalScreenSpacing,
       marginTop: 32,
-      marginHorizontal: 16,
       gap: 16,
     },
     actionContainer: {

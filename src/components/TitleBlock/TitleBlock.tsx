@@ -1,7 +1,8 @@
-import { Topbar, TopbarProps } from '@components/Topbar/Topbar';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Text } from 'react-native-paper';
+import { Topbar, TopbarProps } from '@components/Topbar/Topbar';
+import { commonStyles } from 'commonStyles';
 
 interface TitleBlockProps {
     title: string;
@@ -26,12 +27,12 @@ const styles = StyleSheet.create({
         marginBottom: 64,
     },
     titleContainer: {
-        marginHorizontal: 16,
+        ...commonStyles.horizontalScreenSpacing,
     },
     titleContainerWithoutTopbar: {
         marginTop: 128,
     },
     titleContainerWithTopbar: {
-        marginTop: 35,
+        marginTop: 64,
     }
 });
