@@ -8,11 +8,6 @@ import { AuthContext } from '@context/AuthContext';
 
 export const HomeScreen = ({ navigation }: ScreenProps<"Home">) => {
   const { profile } = React.useContext(AuthContext);
-  useEffect(() => {
-      if (profile === undefined) {
-          navigation.push('Welcome', {});
-      }
-  }, [profile]);
 
   const items = [
     { title: 'Upperbody workout' },

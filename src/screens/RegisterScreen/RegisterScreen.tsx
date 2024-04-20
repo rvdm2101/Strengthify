@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 import { ScreenProps } from '../screen';
@@ -7,12 +7,7 @@ import { AuthContext } from '@context/AuthContext';
 import { commonStyles } from 'commonStyles';
 
 export const RegisterScreen = ({ navigation }: ScreenProps<"Register">) => {
-    const { profile, register } = React.useContext(AuthContext);
-    useEffect(() => {
-        if (profile !== undefined) {
-            navigation.push('Home', {});
-        }
-    }, [profile]);
+    const { register } = React.useContext(AuthContext);
 
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');

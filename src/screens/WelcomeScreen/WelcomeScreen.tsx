@@ -3,16 +3,8 @@ import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import { ScreenProps } from '../screen';
 import { TitleBlock } from '@components/TitleBlock';
-import { AuthContext } from '@context/AuthContext';
 
 export const WelcomeScreen = ({ navigation }: ScreenProps<"Welcome">) => {
-    const { profile } = React.useContext(AuthContext);
-    useEffect(() => {
-        if (profile !== undefined) {
-            navigation.push('Home', {});
-        }
-    }, [profile]);
-
     const loginAction = useCallback(() => navigation.navigate('Login', {}), []);
     const registerAction = useCallback(() => navigation.navigate('Register', {}), []);
 
