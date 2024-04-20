@@ -1,17 +1,27 @@
-import { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 import { ScreenProps } from '../screen';
 import { TitleBlock } from '@components/TitleBlock';
+import { AuthContext } from '@context/AuthContext';
 import { commonStyles } from 'commonStyles';
 
 export const RegisterScreen = ({ navigation }: ScreenProps<"Register">) => {
+    const { profile, register } = React.useContext(AuthContext);
+    useEffect(() => {
+        if (profile !== undefined) {
+            navigation.push('Home', {});
+        }
+    }, [profile]);
+
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const backToWelcomeAction = useCallback(() => navigation.navigate('Welcome', {}), []);
-    const signupAction = useCallback(() => navigation.navigate('Home', {}), []);
+    const signupAction = useCallback(() => {
+      register(username, email, password);
+    }, [username, email, password]);
     const lostPasswordAction = useCallback(() => {}, []);
 
     return (

@@ -1,16 +1,26 @@
-import { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 import { ScreenProps } from '../screen';
 import { TitleBlock } from '@components/TitleBlock';
+import { AuthContext } from '@context/AuthContext';
 import { commonStyles } from 'commonStyles';
 
 export const LoginScreen = ({ navigation }: ScreenProps<"Login">) => {
+    const { profile, login } = React.useContext(AuthContext);
+    useEffect(() => {
+        if (profile !== undefined) {
+            navigation.push('Home', {});
+        }
+    }, [profile]);
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const backToWelcomeAction = useCallback(() => navigation.navigate('Welcome', {}), []);
-    const loginAction = useCallback(() => navigation.navigate('Home', {}), []);
+    const loginAction = useCallback(() => {
+      login(username, password);
+    }, [username, password]);
     const lostPasswordAction = useCallback(() => {}, []);
 
     return (
