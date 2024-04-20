@@ -1,18 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { Button, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { ScreenProps } from '../screen';
 import { Topbar } from '@components/Topbar';
+import { commonStyles } from 'commonStyles';
+import { HorizontalScrollList } from 'components/HorizontalScrollList';
 
 export const HomeScreen = ({ navigation }: ScreenProps<"Home">) => {
+  const items = [
+    { title: 'Upperbody workout' },
+    { title: 'Upperbody workout' },
+    { title: 'Upperbody workout' },
+    { title: 'Upperbody workout' },
+  ]
+
     return (
       <SafeAreaView style={styles.container}>
-        <Topbar title='Hi name' />
-        <Text>Open up App.js to start working on your app!</Text>
-        <StatusBar style="auto" />
-        <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('ExcerciseDetail', { excerciseId: 2 })}
-        />
+        <Topbar title='Hi [name]!' />
+        <View style={styles.content}>
+          <HorizontalScrollList title='Quick daily workout programs' items={items} />
+          <HorizontalScrollList title='Featured workouts' items={items} />
+          <HorizontalScrollList title='Featured exercises' items={items} />
+        </View>
       </SafeAreaView>
     );
 }
@@ -21,5 +28,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
+  },
+  content: {
+    ...commonStyles.horizontalScreenSpacing,
+    marginTop: 10,
   },
 });
