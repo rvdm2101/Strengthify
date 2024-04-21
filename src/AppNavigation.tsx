@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { ExcerciseDetailScreen } from '@screens/ExcerciseDetailScreen';
+import { ExerciseDetailScreen } from 'screens/ExerciseDetailScreen';
 import { HomeScreen } from '@screens/HomeScreen';
 import { LoginScreen } from '@screens/LoginScreen';
 import { RegisterScreen } from '@screens/RegisterScreen';
@@ -18,20 +18,20 @@ export default function AppNavigation() {
 
   return (
     <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-            {profile?.username ? (
-            <>
-                <Stack.Screen name="Home" component={HomeScreen} />
-                <Stack.Screen name="ExcerciseDetail" component={ExcerciseDetailScreen} />
-            </>
-            ) : (
-            <>
-                <Stack.Screen name="Welcome" component={WelcomeScreen} />
-                <Stack.Screen name="Login" component={LoginScreen} />
-                <Stack.Screen name="Register" component={RegisterScreen} />
-            </>
-            )}
-        </Stack.Navigator>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        {profile?.username ? (
+          <>
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="ExerciseDetail" component={ExerciseDetailScreen} />
+          </>
+        ) : (
+          <>
+            <Stack.Screen name="Welcome" component={WelcomeScreen} />
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Register" component={RegisterScreen} />
+          </>
+        )}
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

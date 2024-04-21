@@ -1,12 +1,12 @@
 import React, { useCallback, useState } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
-import { ScreenProps } from '../screen';
+import { StackScreenProps } from '../screen';
 import { TitleBlock } from '@components/TitleBlock';
 import { AuthContext } from '@context/AuthContext';
 import { commonStyles } from 'commonStyles';
 
-export const RegisterScreen = ({ navigation }: ScreenProps<"Register">) => {
+export const RegisterScreen = ({ navigation }: StackScreenProps<"Register">) => {
     const { register } = React.useContext(AuthContext);
 
     const [username, setUsername] = useState('');

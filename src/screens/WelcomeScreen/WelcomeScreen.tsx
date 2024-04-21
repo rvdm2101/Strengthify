@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect } from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-paper';
-import { ScreenProps } from '../screen';
+import { StackScreenProps } from '../screen';
 import { TitleBlock } from '@components/TitleBlock';
 
-export const WelcomeScreen = ({ navigation }: ScreenProps<"Welcome">) => {
+export const WelcomeScreen = ({ navigation }: StackScreenProps<"Welcome">) => {
     const loginAction = useCallback(() => navigation.navigate('Login', {}), []);
     const registerAction = useCallback(() => navigation.navigate('Register', {}), []);
 
